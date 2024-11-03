@@ -22,12 +22,12 @@ A lógica de cada estado será definida nas seguintes funções:
 - run_S125()
 - run_S150()
 
+Para simplificar o uso, para execução da logica do estado atual, bastará chamar o metodo run_state() e ele se encarregará de chamar a função run_SXXX() correta.
+
 A cada turno de atualização da FSM, será chamado a função FSM.update(). Esse metodo deverá realizar a leitura do evente da classa HAL e atualização do estado.
 
 ## HAL
 A classe HAL será composta por uma classe abstrata "HAL", que servirá de interface comum para todas as plataformas. A partir desta classe, criaremos as implementações para Linux e Atlys.
-
-
 
 ## Comunicação FSM->HAL
 A comunicação da class FSM para a classe HAL será via os metodos presentes na classe abstrata HAL que deverão ser chamados pela FSM. Os metodos são:
@@ -42,7 +42,7 @@ A comunicação no sentido oposto deverá ocorrer via eventos, representados pel
 - EV_NONE : Nenhum evento
 - C025 : Moeda de 25 inserida
 - C050 : Moeda de 50 inserida
-- C0100: Moeda de 100 inserida
+- C100: Moeda de 100 inserida
 - RET  : Cliente solicitou o retorno das moedas
 - MEET : Cliente soliciou um refrigerante MEET
 - ETIRPS: Cliente solicitou um refrigerante ETIRPS
@@ -55,10 +55,10 @@ A comunicação no sentido oposto deverá ocorrer via eventos, representados pel
 
 
 
-## Logger
-A classe Logger deve manter um log com data e hora das vendas utilizando um lista encadeada. Os metodos serão:
+## Log
+A classe Log deve manter um log com data e hora das vendas utilizando um lista encadeada. Os metodos serão:
 - log_hal_ev(HAL_EV event) : salva os eventos do tipo HAL_EV (em especial, MEET e ETIRPS)
-- print() : utiliza a hal para o display do dado do log
+- display() : utiliza a hal para o display do dado do log
 
 
 # Estrutura dos arquivos:
