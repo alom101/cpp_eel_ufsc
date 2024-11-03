@@ -55,7 +55,18 @@ A comunicação no sentido oposto deverá ocorrer via eventos, representados pel
 
 
 
-# Log
-A classe HAL deve manter um log com data e hora das vendas utilizando um lista encadeada. Os metodos serão:
+## Logger
+A classe Logger deve manter um log com data e hora das vendas utilizando um lista encadeada. Os metodos serão:
 - log_hal_ev(HAL_EV event) : salva os eventos do tipo HAL_EV (em especial, MEET e ETIRPS)
 - print() : utiliza a hal para o display do dado do log
+
+
+# Estrutura dos arquivos:
+As definições gerais do projeto estarão contidas no header maquina.h. Isto inclui:
+- Enum FSM_STATE
+- Enum HAL_EV
+- Classe FSM
+- Classe astrata HAL
+- Classe Log
+
+As implementações das classes estarão em arquivos com os respectivos nomes.
