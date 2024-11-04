@@ -1,6 +1,7 @@
 #ifndef MAQUINA_H
 #define MAQUINA_H
 
+#include <string>
 typedef enum {S000, S025, S050, S075, S100, S125, S150} FSM_STATE;
 
 typedef enum {EV_NONE, C025, C050, C100, RET, MEET, ETIRPS} HAL_EV;
@@ -32,6 +33,7 @@ private:
   FSM_STATE current_state;
   HAL* _hal;
   void change_state(FSM_STATE new_state);
+  std::string state_to_string(FSM_STATE state);
   void run_state(HAL_EV event);
   // implemetações específicas de cada estado
   void run_S000(HAL_EV event);

@@ -1,4 +1,6 @@
 #include "maquina.h"
+#include <iostream>
+#include <string>
 
 FSM::FSM(HAL* hal){
   current_state = S000;
@@ -36,8 +38,28 @@ void FSM::update(){
   run_state(event);
 }
 
+std::string FSM::state_to_string(FSM_STATE state){
+  switch (state) {
+    case S000:
+      return "S000";
+    case S025:
+      return "S025";
+    case S050:
+      return "S050";
+    case S075:
+      return "S075";
+    case S100:
+      return "S100";
+    case S125:
+      return "S125";
+    case S150:
+      return "S150";
+  }
+  return "---";
+}
+
 void FSM::change_state(FSM_STATE new_state){
-  //add debug print here if needed
+  std::cout << "State changed to " << state_to_string(new_state) << "\n";
   current_state = new_state;
 }
 

@@ -1,5 +1,6 @@
 #include "maquina.h"
 #include <iostream>
+#include <string>
 
 
 void HAL_Linux::D025(){
@@ -23,7 +24,25 @@ void HAL_Linux::LETIRPS(){
 }
 
 HAL_EV HAL_Linux::input(){
-  return EV_NONE;
+  std::string input;
+  std::cout << "Input:\t";
+  std::cin >> input;
+
+  if(input == "C025"){
+    return C025;
+  } else if (input == "C050") {
+    return C050;  
+  } else if (input == "C100") {
+    return C100;  
+  } else if (input == "RET") {
+    return RET;  
+  } else if (input == "MEET") {
+    return MEET;  
+  } else if (input == "ETIRPS") {
+    return ETIRPS;  
+  } else {
+    return EV_NONE;
+  }
 }
 
 
