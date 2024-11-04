@@ -36,31 +36,185 @@ void FSM::update(){
   run_state(event);
 }
 
+void FSM::change_state(FSM_STATE new_state){
+  //add debug print here if needed
+  current_state = new_state;
+}
 
 void FSM::run_S000(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      change_state(S025);
+      break;
+    case C050:
+      change_state(S050);
+      break;
+    case C100:
+      change_state(S100);
+      break;
+    case RET:
+      break;
+    case MEET:
+      break;
+    case ETIRPS:
+      break;
+  }
 }
 
 void FSM::run_S025(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      change_state(S050);
+      break;
+    case C050:
+      change_state(S075);
+      break;
+    case C100:
+      change_state(S125);
+      break;
+    case RET:
+      _hal->D025();
+      change_state(S000);
+      break;
+    case MEET:
+      break;
+    case ETIRPS:
+      break;
+  }
 }
 
 void FSM::run_S050(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      change_state(S075);
+      break;
+    case C050:
+      change_state(S100);
+      break;
+    case C100:
+      change_state(S150);
+      break;
+    case RET:
+      _hal->D050();
+      change_state(S000);
+      break;
+    case MEET:
+      break;
+    case ETIRPS:
+      break;
+  }
 }
 
 void FSM::run_S075(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      change_state(S100);
+      break;
+    case C050:
+      change_state(S125);
+      break;
+    case C100:
+      change_state(S150);
+      _hal->D025();
+      break;
+    case RET:
+      _hal->D050();
+      _hal->D025();
+      change_state(S000);
+      break;
+    case MEET:
+      break;
+    case ETIRPS:
+      break;
+  }
 }
 
 void FSM::run_S100(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      change_state(S125);
+      break;
+    case C050:
+      change_state(S150);
+      break;
+    case C100:
+      change_state(S150);
+      _hal->D050();
+      break;
+    case RET:
+      _hal->D050();
+      _hal->D050();
+      change_state(S000);
+      break;
+    case MEET:
+      break;
+    case ETIRPS:
+      break;
+  }
 }
 
 void FSM::run_S125(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      change_state(S150);
+      break;
+    case C050:
+      change_state(S150);
+      _hal->D025();
+      break;
+    case C100:
+      change_state(S150);
+      _hal->D050();
+      break;
+    case RET:
+      _hal->D100();
+      _hal->D025();
+      change_state(S000);
+      break;
+    case MEET:
+      break;
+    case ETIRPS:
+      break;
+  }
 }
 
 void FSM::run_S150(HAL_EV event){
-
+  switch (event) {
+    case EV_NONE:
+      break;
+    case C025:
+      _hal->D025();
+      break;
+    case C050:
+      _hal->D050();
+      break;
+    case C100:
+      _hal->D100();
+      break;
+    case RET:
+      _hal->D100();
+      _hal->D050();
+      change_state(S000);
+      break;
+    case MEET:
+      _hal->LMEET();
+      change_state(S000);
+      break;
+    case ETIRPS:
+      _hal->LETIRPS();
+      change_state(S000);
+      break;
+  }
 }

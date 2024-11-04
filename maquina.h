@@ -21,6 +21,8 @@ private:
   HAL_EV _event;
   Log* next;
 public:
+  Log();
+  Log(HAL_EV event);
   void log_hal_ev(HAL_EV event);
   void display();
 };
@@ -29,6 +31,7 @@ class FSM{
 private:
   FSM_STATE current_state;
   HAL* _hal;
+  void change_state(FSM_STATE new_state);
   void run_state(HAL_EV event);
   // implemetações específicas de cada estado
   void run_S000(HAL_EV event);

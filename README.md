@@ -24,6 +24,8 @@ A lógica de cada estado será definida nas seguintes funções:
 
 Para simplificar o uso, para execução da logica do estado atual, bastará chamar o metodo run_state() e ele se encarregará de chamar a função run_SXXX() correta.
 
+As transições de estado ocorrerão pelo método FSM.change_state(FSM_STATE new_state) para centralizar a mudança de estado, tornando o log/debug das mudanças mais fácil.
+
 A cada turno de atualização da FSM, será chamado a função FSM.update(). Esse metodo deverá realizar a leitura do evente da classa HAL e atualização do estado.
 
 ## HAL
@@ -66,7 +68,7 @@ As definições gerais do projeto estarão contidas no header maquina.h. Isto in
 - Enum FSM_STATE
 - Enum HAL_EV
 - Classe FSM
-- Classe astrata HAL
+- Classe astrata HAL e classes concretas
 - Classe Log
 
 As implementações das classes estarão em arquivos com os respectivos nomes.
