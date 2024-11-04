@@ -1,7 +1,7 @@
 #ifndef MAQUINA_H
 #define MAQUINA_H
 
-typedef enum {S000, S025, S050, S100, S125, S150} FSM_STATE;
+typedef enum {S000, S025, S050, S075, S100, S125, S150} FSM_STATE;
 
 typedef enum {EV_NONE, C025, C050, C100, RET, MEET, ETIRPS} HAL_EV;
 
@@ -12,6 +12,7 @@ public:
   virtual void D100()=0;
   virtual void LMEET()=0;
   virtual void LETIRPS()=0;
+  virtual HAL_EV input()=0;
 };
 
 class Log{
@@ -27,15 +28,16 @@ public:
 class FSM{
 private:
   FSM_STATE current_state;
-  HAL* hal;
-  void run_state();
+  HAL* _hal;
+  void run_state(HAL_EV event);
   // implemetações específicas de cada estado
-  void run_S000();
-  void run_S025();
-  void run_S050();
-  void run_S100();
-  void run_S125();
-  void run_S150();
+  void run_S000(HAL_EV event);
+  void run_S025(HAL_EV event);
+  void run_S050(HAL_EV event);
+  void run_S075(HAL_EV event);
+  void run_S100(HAL_EV event);
+  void run_S125(HAL_EV event);
+  void run_S150(HAL_EV event);
 public:
   FSM(HAL* hal);
   void update();
@@ -49,6 +51,7 @@ public:
   void D100();
   void LMEET();
   void LETIRPS();
+  HAL_EV input();
 };
 
 class HAL_Atlys: public HAL{
@@ -58,6 +61,7 @@ public:
   void D100();
   void LMEET();
   void LETIRPS();
+  HAL_EV input();
 };
 
 #endif // !MAQUINA_H
