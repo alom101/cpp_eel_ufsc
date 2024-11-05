@@ -1,31 +1,27 @@
 #include "maquina.h"
+#include <iostream>
 
+#include "config.h"
 
 int main (int argc, char *argv[]) {
-  HAL_Linux hal1 = HAL_Linux();
-  FSM fsm1 = FSM(&hal1);
-  fsm1.update();
-  fsm1.update();
-  fsm1.update();
-  fsm1.update();
-  fsm1.update();
-  hal1.hal_log.display();
+  #ifdef TARGET_ATLYS
+    HAL_Atlys hal = HAL_Atlys();
+    std::cout<<"ATLYS";
+  #endif
+
+  #ifdef TARGET_LINUX
+    std::cout<<"HAL_Linux";
+    HAL_Linux hal = HAL_Linux();
+  #endif
 
 
-  // HAL_Atlys hal2 = HAL_Atlys();
-  // FSM fsm2 = FSM(&hal2);
-  // fsm2.update();
-  // fsm2.update();
-  // fsm2.update();
-  // fsm2.update();
-  // fsm2.update();
-  // fsm2.update();
-
-  // Log log = Log();
-  // log.display();
-  // log.log_hal_ev(MEET);
-  // log.log_hal_ev(ETIRPS);
-  // log.display();
+  FSM fsm = FSM(&hal);
+  fsm.update();
+  fsm.update();
+  fsm.update();
+  fsm.update();
+  fsm.update();
+  hal.hal_log.display();
 
 
   return 0;

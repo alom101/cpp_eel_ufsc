@@ -1,6 +1,4 @@
 # Projeto Maquina de Refrigerantes
-Aluno: Arthur Leones Osorio Machado
-Matricula: 19103415
 
 # Proposta
 O codigo do projeto deverá rodar em Linux e na plataforma Atlys, por isso, será dividido em maquina de estados(FSM), onde estará a lógica de funcionamento da maquina de refrigerantes, e o layer de abstração de hardware(HAL), onde ficará o codigo específico para cada plataforma. Os dados de venda serão salvos como uma lista encadeada na classe Log.
@@ -50,11 +48,10 @@ A comunicação no sentido oposto deverá ocorrer via eventos, representados pel
 - ETIRPS: Cliente solicitou um refrigerante ETIRPS
 
 ### HAL_Linux
-
-
+IO: Teclado
 
 ### HAL_Atlys
-
+IO: Serial e display
 
 
 ## Log
@@ -64,11 +61,6 @@ A classe Log deve manter um log com data e hora das vendas utilizando um lista e
 
 
 # Estrutura dos arquivos:
-As definições gerais do projeto estarão contidas no header maquina.h. Isto inclui:
-- Enum FSM_STATE
-- Enum HAL_EV
-- Classe FSM
-- Classe astrata HAL e classes concretas
-- Classe Log
-
+config.h    Configurações de modo geral
+maquina.h   Definições usadas na maioria dos arquivos serão definidas aqui. (para evitar muitos arquivos com nome X.cpp e X.h)
 As implementações das classes estarão em arquivos com os respectivos nomes.

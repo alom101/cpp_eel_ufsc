@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <string>
+#include "config.h"
 
 typedef enum {S000, S025, S050, S075, S100, S125, S150} FSM_STATE;
 

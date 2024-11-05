@@ -22,7 +22,7 @@ void FSM::run_state(HAL_EV event){
     run_S075(event);
     break;
   case S100:
-    run_S000(event);
+    run_S100(event);
     break;
   case S125:
     run_S125(event);
