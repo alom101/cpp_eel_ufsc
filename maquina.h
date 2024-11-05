@@ -1,6 +1,7 @@
 #ifndef MAQUINA_H
 #define MAQUINA_H
 
+#include <ctime>
 #include <string>
 typedef enum {S000, S025, S050, S075, S100, S125, S150} FSM_STATE;
 
@@ -18,13 +19,15 @@ public:
 
 class Log{
 private:
-  // TODO: ADD TIMESTAMP!
+  time_t timestamp;
   HAL_EV _event;
   Log* next;
 public:
   Log();
   Log(HAL_EV event);
   void log_hal_ev(HAL_EV event);
+  std::string get_log_datetime();
+  std::string get_log_event();
   void display();
 };
 
