@@ -1,13 +1,14 @@
 
 
 // Define target
-#define TARGET_LINUX
-// #define TARGET_ATLYS
+// #define TARGET_LINUX
+#define TARGET_ATLYS
 
 
 // Debug options
 // #define DEBUG_ENABLED
 
+#define USE_OLED
 
 // Configuração de log
 #define LOG_HAL_EV

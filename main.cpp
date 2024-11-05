@@ -1,5 +1,4 @@
 #include "maquina.h"
-#include <iostream>
 
 #include "config.h"
 
@@ -14,6 +13,7 @@ int main (int argc, char *argv[]) {
     HAL_Linux hal = HAL_Linux();
   #endif
 
+  read_inputs(); 
 
   FSM fsm = FSM(&hal);
   fsm.update();
@@ -22,6 +22,7 @@ int main (int argc, char *argv[]) {
   fsm.update();
   fsm.update();
   hal.hal_log.display();
+  // fsm.fsm_log.display();
 
 
   return 0;

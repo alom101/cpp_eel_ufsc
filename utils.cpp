@@ -1,5 +1,5 @@
-
 #include "maquina.h"
+#include <iostream>
 
 
 std::string state_to_string(FSM_STATE state){
@@ -58,4 +58,23 @@ HAL_EV string_to_hal_event(std::string event_str){
   } else {
     return EV_NONE;
   }
+}
+
+
+#ifdef USE_OLED
+#include "Oled.h"
+#endif // USE_OLED
+
+
+
+void print_oled(char* str, int line){
+  #ifdef USE_OLED
+    clearLine(line);
+    printString(str);
+  #else
+    std::cout << "Oled line " << line << ": " << str << "\n";
+  #endif
+}
+
+void read_inputs(){
 }

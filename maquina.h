@@ -13,7 +13,6 @@
 #endif
 
 
-
 //ENUMS
 typedef enum {S000, S025, S050, S075, S100, S125, S150} FSM_STATE;
 
@@ -94,6 +93,7 @@ std::string state_to_string(FSM_STATE state);
 std::string hal_event_to_string(HAL_EV event);
 HAL_EV string_to_hal_event(std::string event_str);
 
-
+void print_oled(char* str, int line);
+void read_inputs();
 
 #endif // !MAQUINA_H
