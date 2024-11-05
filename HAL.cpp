@@ -24,27 +24,16 @@ void HAL_Linux::LETIRPS(){
 }
 
 HAL_EV HAL_Linux::input(){
-  HAL_EV ret_value;
   std::string input;
   std::cout << "Input:\t";
   std::cin >> input;
 
-  if(input == "C025"){
-    ret_value = C025;
-  } else if (input == "C050") {
-    ret_value = C050;  
-  } else if (input == "C100") {
-    ret_value = C100;  
-  } else if (input == "RET") {
-    ret_value = RET;  
-  } else if (input == "MEET") {
-    ret_value = MEET;  
-  } else if (input == "ETIRPS") {
-    ret_value = ETIRPS;  
-  } else {
-    ret_value = EV_NONE;
-  }
+  HAL_EV ret_value = string_to_hal_event(input);
+
+  #ifdef LOG_HAL_EV
   hal_log.log_hal_ev(ret_value);
+  #endif 
+  
   return ret_value;
 }
 

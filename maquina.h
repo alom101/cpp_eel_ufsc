@@ -5,10 +5,22 @@
 #include <string>
 #include "config.h"
 
+// MACROS
+#ifdef DEBUG_ENABLED
+    #define DEBUG_PRINT(message) std::cout << message << std::endl;
+#else
+    #define DEBUG_PRINT(message)
+#endif
+
+
+
+//ENUMS
 typedef enum {S000, S025, S050, S075, S100, S125, S150} FSM_STATE;
 
 typedef enum {EV_NONE, C025, C050, C100, RET, MEET, ETIRPS} HAL_EV;
 
+
+//CLASSES
 class Log{
 private:
   time_t timestamp;
@@ -39,7 +51,6 @@ private:
   FSM_STATE current_state;
   HAL* _hal;
   void change_state(FSM_STATE new_state);
-  std::string state_to_string(FSM_STATE state);
   void run_state(HAL_EV event);
   // implemetações específicas de cada estado
   void run_S000(HAL_EV event);
@@ -74,5 +85,15 @@ public:
   void LETIRPS();
   HAL_EV input();
 };
+
+
+// UTILS
+std::string state_to_string(FSM_STATE state);
+// FSM_STATE string_to_state(std::string state_str);
+
+std::string hal_event_to_string(HAL_EV event);
+HAL_EV string_to_hal_event(std::string event_str);
+
+
 
 #endif // !MAQUINA_H

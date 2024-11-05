@@ -8,6 +8,7 @@ FSM::FSM(HAL* hal){
 }
 
 void FSM::run_state(HAL_EV event){
+  DEBUG_PRINT("FSM processando evento: " << )
   switch (current_state) {
   case S000:
     run_S000(event);
@@ -36,26 +37,6 @@ void FSM::run_state(HAL_EV event){
 void FSM::update(){
   HAL_EV event = _hal->input();
   run_state(event);
-}
-
-std::string FSM::state_to_string(FSM_STATE state){
-  switch (state) {
-    case S000:
-      return "S000";
-    case S025:
-      return "S025";
-    case S050:
-      return "S050";
-    case S075:
-      return "S075";
-    case S100:
-      return "S100";
-    case S125:
-      return "S125";
-    case S150:
-      return "S150";
-  }
-  return "---";
 }
 
 void FSM::change_state(FSM_STATE new_state){

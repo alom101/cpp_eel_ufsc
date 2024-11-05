@@ -5,12 +5,12 @@
 
 int main (int argc, char *argv[]) {
   #ifdef TARGET_ATLYS
+    DEBUG_PRINT("HAL_Atlys selecionada")
     HAL_Atlys hal = HAL_Atlys();
-    std::cout<<"ATLYS";
   #endif
 
   #ifdef TARGET_LINUX
-    std::cout<<"HAL_Linux";
+    DEBUG_PRINT("HAL_Linux selecionada")
     HAL_Linux hal = HAL_Linux();
   #endif
 
