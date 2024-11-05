@@ -1,6 +1,5 @@
 #include "maquina.h"
 #include <iostream>
-#include <string>
 
 FSM::FSM(HAL* hal){
   current_state = S000;
@@ -8,7 +7,7 @@ FSM::FSM(HAL* hal){
 }
 
 void FSM::run_state(HAL_EV event){
-  DEBUG_PRINT("FSM processando evento: " << )
+  DEBUG_PRINT("FSM processando evento: " << hal_event_to_string(event))
   switch (current_state) {
   case S000:
     run_S000(event);
@@ -40,7 +39,7 @@ void FSM::update(){
 }
 
 void FSM::change_state(FSM_STATE new_state){
-  std::cout << "State changed to " << state_to_string(new_state) << "\n";
+  DEBUG_PRINT("State changed: " << state_to_string(current_state) << "-to->" <<state_to_string(new_state))
   current_state = new_state;
 }
 
