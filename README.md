@@ -26,6 +26,24 @@ As transições de estado ocorrerão pelo método FSM.change_state(FSM_STATE new
 
 A cada turno de atualização da FSM, será chamado a função FSM.update(). Esse metodo deverá realizar a leitura do evente da classa HAL e atualização do estado.
 
+Aqui está a tabela formatada em Markdown:
+
+###Transições
+| Current state | Nothing | C025      | C050      | C100           | RET            | MEET        | ETIRPS       |
+|---------------|---------|-----------|-----------|----------------|----------------|-------------|--------------|
+| S000          | S000    | S025      | S050      | S100           | S000           | S000, LMEET | S000,LETIRPS |
+| S025          | S025    | S050      | S075      | S125           | S000,D025      | S000, LMEET | S000,LETIRPS |
+| S050          | S050    | S075      | S100      | S150           | S000,D050      | S000, LMEET | S000,LETIRPS |
+| S075          | S075    | S100      | S125      | S150,D025      | S000,D025,D050 | S000, LMEET | S000,LETIRPS |
+| S100          | S100    | S125      | S150      | S150,D050      | S000,D100      | S000, LMEET | S000,LETIRPS |
+| S125          | S125    | S150      | S150,D025 | S150,D050,D025 | S000,D100,D025 | S000, LMEET | S000,LETIRPS |
+| S150          | S150    | S150,D025 | S150,D050 | S150,D100      | S000,D100,D050 | S000, LMEET | S000,LETIRPS |
+
+
+Observe que, como você mencionou que a célula "Input Command" está agrupando da coluna 2 até o final, eu coloquei um espaço em branco ou caracteres especiais na célula correspondente na segunda linha.
+
+Se você quiser manter a formatação original, posso tentar novamente. Por favor, forneça mais informações sobre como você gostaria que a tabela fosse formatada.
+
 ## HAL
 A classe HAL será composta por uma classe abstrata "HAL", que servirá de interface comum para todas as plataformas. A partir desta classe, criaremos as implementações para Linux e Atlys.
 
