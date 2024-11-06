@@ -36,12 +36,12 @@ void Log::append_log(Log* new_log){
 
 // LOG HAL
 Log_HAL::Log_HAL(){
-  timestamp = time(nullptr);
+  timestamp = time(NULL);
   next = NULL;
 }
 
 Log_HAL::Log_HAL(HAL_EV event){
-  timestamp = time(nullptr);
+  timestamp = time(NULL);
   _event = event;
   next = NULL;
 }
@@ -73,12 +73,12 @@ std::string Log_HAL::get_log_text(){
 
 // LOG FSM
 Log_FSM::Log_FSM(){
-  timestamp = time(nullptr);
+  timestamp = time(NULL);
   next = NULL;
 }
 
 Log_FSM::Log_FSM(FSM_STATE state){
-  timestamp = time(nullptr);
+  timestamp = time(NULL);
   _state = state;
   next = NULL;
 }

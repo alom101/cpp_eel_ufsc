@@ -46,33 +46,33 @@ HAL_EV HAL_Linux::input(){
 // ATLYS
 //
 void HAL_Atlys::D025(){
-  std::string texto = "Moeda de R$0,25 liberada!\n";
-  print_oled(texto.data(), 1);
+  char texto[50] = "Moeda de R$0,25 liberada!\n";
+  print_oled(texto, 1);
 }
 
 void HAL_Atlys::D050(){
-  std::string texto = "Moeda de R$0,50 liberada!\n";
-  print_oled(texto.data(), 1);
+  char texto[50] = "Moeda de R$0,50 liberada!\n";
+  print_oled(texto, 1);
 }
 
 void HAL_Atlys::D100(){
-  std::string texto =  "Moeda de R$1,00 liberada!\n";
-  print_oled(texto.data(), 1);
+  char texto[50] =  "Moeda de R$1,00 liberada!\n";
+  print_oled(texto, 1);
 }
 
 void HAL_Atlys::LMEET(){
-  std::string texto = "MEET liberada!\n";
-  print_oled(texto.data(), 1);
+  char texto[50] = "MEET liberada!\n";
+  print_oled(texto, 1);
 }
 
 void HAL_Atlys::LETIRPS(){
-  std::string texto =  "ETIRPS liberada!\n";
-  print_oled(texto.data(), 1);
+  char texto[50] =  "ETIRPS liberada!\n";
+  print_oled(texto, 1);
 }
 
 void HAL_Atlys::update_oled_time(){
     static char datetime_str[20];
-    time_t now = time(nullptr);
+    time_t now = time(NULL);
     struct tm* timeinfo;
     timeinfo = localtime(&now);
 
@@ -84,14 +84,16 @@ HAL_EV HAL_Atlys::input(){
   // botoes de GPIO 16 a 20
   volatile unsigned int *data = (volatile unsigned int *)0x80000a00;
   char botoes = (unsigned char)((*data >> 16) & 0x000000FF);
-  
+  char chaves = (unsigned char)((*data >> 8) & 0x0000000F); 
+
   if(botoes & 1) return C025;
   if((botoes>>1) & 1) return C050;
   if((botoes>>2) & 1) return C100;
   if((botoes>>3) & 1) return MEET;
   if((botoes>>4) & 1) return ETIRPS;
 
-  if((botoes>>5) & 1) return RET;//possivel bug
+  if((botoes>>5) & 1) return RET; //possivel bug
+  // if((chaves) & 1) return RET; // alternativa
 
   return EV_NONE;
 }
