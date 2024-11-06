@@ -5,8 +5,13 @@ all:
 a.out:
 	g++ *.cpp
 
-test: a.out
+test:
+	rm a.out
+	g++ *.cpp
 	./a.out
+
+spark:
+	sparc-elf-g++ *.cpp
 
 clean:
 	rm a.out

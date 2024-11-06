@@ -121,4 +121,6 @@ HAL_EV string_to_hal_event(std::string event_str);
 void print_oled(char* str, int line);
 void read_inputs();
 
+#define DELAY_TIME 1000
+
 #endif // !MAQUINA_H

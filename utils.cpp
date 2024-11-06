@@ -75,5 +75,3 @@ void print_oled(char* str, int line){
   #endif
 }
 
-void read_inputs(){
-}

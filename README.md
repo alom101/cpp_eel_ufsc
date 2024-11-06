@@ -31,12 +31,12 @@ Aqui está a tabela formatada em Markdown:
 ###Transições
 | Current state | Nothing | C025      | C050      | C100           | RET            | MEET        | ETIRPS       |
 |---------------|---------|-----------|-----------|----------------|----------------|-------------|--------------|
-| S000          | S000    | S025      | S050      | S100           | S000           | S000, LMEET | S000,LETIRPS |
-| S025          | S025    | S050      | S075      | S125           | S000,D025      | S000, LMEET | S000,LETIRPS |
-| S050          | S050    | S075      | S100      | S150           | S000,D050      | S000, LMEET | S000,LETIRPS |
-| S075          | S075    | S100      | S125      | S150,D025      | S000,D025,D050 | S000, LMEET | S000,LETIRPS |
-| S100          | S100    | S125      | S150      | S150,D050      | S000,D100      | S000, LMEET | S000,LETIRPS |
-| S125          | S125    | S150      | S150,D025 | S150,D050,D025 | S000,D100,D025 | S000, LMEET | S000,LETIRPS |
+| S000          | S000    | S025      | S050      | S100           | S000           | S000 | S000 |
+| S025          | S025    | S050      | S075      | S125           | S000,D025      | S000 | S000 |
+| S050          | S050    | S075      | S100      | S150           | S000,D050      | S000 | S000 |
+| S075          | S075    | S100      | S125      | S150,D025      | S000,D025,D050 | S000 | S000 |
+| S100          | S100    | S125      | S150      | S150,D050      | S000,D100      | S000 | S000 |
+| S125          | S125    | S150      | S150,D025 | S150,D050,D025 | S000,D100,D025 | S000 | S000 |
 | S150          | S150    | S150,D025 | S150,D050 | S150,D100      | S000,D100,D050 | S000, LMEET | S000,LETIRPS |
 
 
@@ -82,3 +82,14 @@ A classe Log deve manter um log com data e hora das vendas utilizando um lista e
 config.h    Configurações de modo geral
 maquina.h   Definições usadas na maioria dos arquivos serão definidas aqui. (para evitar muitos arquivos com nome X.cpp e X.h)
 As implementações das classes estarão em arquivos com os respectivos nomes.
+Oled.cpp e Oled.h arquivos de aula   com poucas modificações
+config.h    Algumas configurações para rapida mudança do comportamento do codigo(debug/plataforma/...)
+
+# O que faltou
+## Debouce
+O código para o Atlys itera muito rápido e, em uma unica apertada do botão, gera mais de uma inserção de moeda ou pedido de bebida. Como o pedido de retorno e de bebida vem acompanhado com o retorno para o estado S000, não é um problema neste caso. No caso das moedas, é necessário um debouce ou um esperar o botão retornar ao estado inicial, indicando o fim da inserçao da moeda.
+
+## ClockCalendar
+O codigo para exibição do tempo funciona no Linux, mas não no Atlys.
+
+
