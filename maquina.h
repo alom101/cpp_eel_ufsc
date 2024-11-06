@@ -44,6 +44,17 @@ public:
   std::string get_log_text();
 };
 
+class Log_FSM: public Log{
+protected:
+  FSM_STATE _state;
+public:
+  Log_FSM();
+  Log_FSM(FSM_STATE state);
+  void log(FSM_STATE state);
+  std::string get_log_text();
+};
+
+
 
 class HAL{
 public:

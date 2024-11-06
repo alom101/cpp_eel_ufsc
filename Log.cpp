@@ -71,3 +71,40 @@ std::string Log_HAL::get_log_text(){
 }
 
 
+// LOG FSM
+Log_FSM::Log_FSM(){
+  timestamp = time(nullptr);
+  next = NULL;
+}
+
+Log_FSM::Log_FSM(FSM_STATE state){
+  timestamp = time(nullptr);
+  _state = state;
+  next = NULL;
+}
+
+void Log_FSM::log(FSM_STATE state){
+  append_log(new Log_FSM(state));
+}
+
+std::string Log_FSM::get_log_text(){
+  switch (_state) {
+    case S000:
+      return "Estado S000";
+    case S025:
+      return "Estado S025";
+    case S050:
+      return "Estado S050";
+    case S075:
+      return "Estado S075";
+    case S100:
+      return "Estado S100";
+    case S125:
+      return "Estado S125";
+    case S150:
+      return "Estado S150";
+  }
+  return "BUG!!!";
+}
+
+
