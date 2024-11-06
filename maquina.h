@@ -4,6 +4,7 @@
 #include <ctime>
 #include <string>
 #include "config.h"
+#include <iostream>
 
 // MACROS
 #ifdef DEBUG_ENABLED
@@ -82,6 +83,7 @@ private:
   void run_S125(HAL_EV event);
   void run_S150(HAL_EV event);
 public:
+  Log_FSM fsm_log;
   FSM(HAL* hal);
   void update();
 };
@@ -105,6 +107,7 @@ public:
   void LMEET();
   void LETIRPS();
   HAL_EV input();
+  void update_oled_time();
 };
 
 

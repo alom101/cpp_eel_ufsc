@@ -66,7 +66,6 @@ HAL_EV string_to_hal_event(std::string event_str){
 #endif // USE_OLED
 
 
-
 void print_oled(char* str, int line){
   #ifdef USE_OLED
     clearLine(line);

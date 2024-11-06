@@ -22,7 +22,7 @@ int main (int argc, char *argv[]) {
   fsm.update();
   fsm.update();
   hal.hal_log.display();
-  // fsm.fsm_log.display();
+  fsm.fsm_log.display();
 
 
   return 0;

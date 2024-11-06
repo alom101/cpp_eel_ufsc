@@ -1,5 +1,4 @@
 #include "maquina.h"
-#include <iostream>
 
 FSM::FSM(HAL* hal){
   current_state = S000;
@@ -40,6 +39,7 @@ void FSM::update(){
 
 void FSM::change_state(FSM_STATE new_state){
   DEBUG_PRINT("State changed: " << state_to_string(current_state) << "-to->" <<state_to_string(new_state))
+  fsm_log.log(new_state);
   current_state = new_state;
 }
 

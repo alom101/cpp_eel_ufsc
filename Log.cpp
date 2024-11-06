@@ -14,8 +14,8 @@ std::string Log::get_log_datetime(){
 }
 
 void Log::display(){
-  Log* log = this;
-  std::cout << "Displaying log:\n";
+  Log* log = this->next; // o primeiro item não será utilizado para armazenamento de log, apenas para tempo inicial
+  std::cout << "Log:\n";
   while(log){
     std::cout << log->get_log_datetime() << ":\t" << log->get_log_text() << "\n"; 
     log = log->next;
@@ -67,7 +67,7 @@ std::string Log_HAL::get_log_text(){
     case ETIRPS:
       return "Refrigerante ETIRPS solicitado";
   }
-  return "BUG!!!";
+  return "BUG!!"; // esse valor nunca deve ser atingido
 }
 
 
@@ -90,21 +90,21 @@ void Log_FSM::log(FSM_STATE state){
 std::string Log_FSM::get_log_text(){
   switch (_state) {
     case S000:
-      return "Estado S000";
+      return "Estado S000 atingido";
     case S025:
-      return "Estado S025";
+      return "Estado S025 atingido";
     case S050:
-      return "Estado S050";
+      return "Estado S050 atingido";
     case S075:
-      return "Estado S075";
+      return "Estado S075 atingido";
     case S100:
-      return "Estado S100";
+      return "Estado S100 atingido";
     case S125:
-      return "Estado S125";
+      return "Estado S125 atingido";
     case S150:
-      return "Estado S150";
+      return "Estado S150 atingido";
   }
-  return "BUG!!!";
+  return "BUG!!"; // esse valor nunca deve ser atingido
 }
 
 
