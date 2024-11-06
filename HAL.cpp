@@ -31,7 +31,7 @@ HAL_EV HAL_Linux::input(){
   HAL_EV ret_value = string_to_hal_event(input);
 
   #ifdef LOG_HAL_EV
-  hal_log.log_hal_ev(ret_value);
+  hal_log.log(ret_value);
   #endif 
   
   return ret_value;

@@ -20,23 +20,34 @@ typedef enum {EV_NONE, C025, C050, C100, RET, MEET, ETIRPS} HAL_EV;
 
 
 //CLASSES
+
 class Log{
-private:
+protected:
   time_t timestamp;
-  HAL_EV _event;
   Log* next;
+  Log* get_last_log();
+  void append_log(Log* new_log);
 public:
-  Log();
-  Log(HAL_EV event);
-  void log_hal_ev(HAL_EV event);
-  std::string get_log_datetime();
-  std::string get_log_event();
   void display();
+  std::string virtual get_log_datetime();
+  std::string virtual get_log_text() = 0;
 };
+
+
+class Log_HAL: public Log{
+protected:
+  HAL_EV _event;
+public:
+  Log_HAL();
+  Log_HAL(HAL_EV event);
+  void log(HAL_EV event);
+  std::string get_log_text();
+};
+
 
 class HAL{
 public:
-  Log hal_log;
+  Log_HAL hal_log;
   virtual void D025()=0;
   virtual void D050()=0;
   virtual void D100()=0;

@@ -1,8 +1,8 @@
 
 
 // Define target
-// #define TARGET_LINUX
-#define TARGET_ATLYS
+#define TARGET_LINUX
+// #define TARGET_ATLYS
 
 
 // Debug options
@@ -10,7 +10,7 @@
 
 #define USE_OLED
 
-// Configuração de log
+// Configuração de log --AINDA FALTA IMPLEMENTAR--
 #define LOG_HAL_EV
 #define LOG_FSM_EV
 #define LOG_FSM_EV_SELL_ONLY
